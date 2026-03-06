@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Tracker - Reduce Your Environmental Impact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-leaf"></i>
+                <span>EcoTracker</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#calculator" class="nav-link">Calculator</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#recommendations" class="nav-link">Tips</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Track Your Carbon Footprint</h1>
+                    <p class="hero-subtitle">Calculate your environmental impact and discover ways to live more sustainably</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="totalUsers">12,453</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="totalCO2Saved">2.3M</span>
+                            <span class="stat-label">kg CO₂ Saved</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="treesEquivalent">45,678</span>
+                            <span class="stat-label">Trees Equivalent</span>
+                        </div>
+                    </div>
+                    <button class="cta-button" onclick="scrollToSection('calculator')">
+                        Start Calculating <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="calculator-section">
+            <div class="container">
+                <h2 class="section-title">Calculate Your Carbon Footprint</h2>
+                <p class="section-subtitle">Enter your daily activities to get an accurate estimate</p>
+                
+                <form id="carbonForm" class="carbon-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-car"></i>
+                                Transportation
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="carMiles" placeholder="Miles driven" min="0">
+                                <select id="carType">
+                                    <option value="gasoline">Gasoline Car</option>
+                                    <option value="hybrid">Hybrid Car</option>
+                                    <option value="electric">Electric Car</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="publicTransport" placeholder="Public transport miles" min="0">
+                                <select id="transportType">
+                                    <option value="bus">Bus</option>
+                                    <option value="train">Train</option>
+                                    <option value="subway">Subway</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="flights" placeholder="Flights per month" min="0">
+                                <select id="flightType">
+                                    <option value="short">Short (< 3 hours)</option>
+                                    <option value="medium">Medium (3-6 hours)</option>
+                                    <option value="long">Long (> 6 hours)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-home"></i>
+                                Home Energy
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="electricity" placeholder="Monthly kWh" min="0">
+                                <select id="energySource">
+                                    <option value="grid">Grid Mix</option>
+                                    <option value="renewable">Renewable</option>
+                                    <option value="coal">Coal Heavy</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="naturalGas" placeholder="Monthly therms" min="0">
+                                <span class="input-unit">Natural Gas</span>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="heatingOil" placeholder="Monthly gallons" min="0">
+                                <span class="input-unit">Heating Oil</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-utensils"></i>
+                                Diet
+                            </label>
+                            <div class="diet-options">
+                                <label class="diet-option">
+                                    <input type="radio" name="diet" value="meatHeavy" checked>
+                                    <span>Meat Heavy</span>
+                                </label>
+                                <label class="diet-option">
+                                    <input type="radio" name="diet" value="average">
+                                    <span>Average</span>
+                                </label>
+                                <label class="diet-option">
+                                    <input type="radio" name="diet" value="vegetarian">
+                                    <span>Vegetarian</span>
+                                </label>
+                                <label class="diet-option">
+                                    <input type="radio" name="diet" value="vegan">
+                                    <span>Vegan</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-shopping-bag"></i>
+                                Consumption
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="shopping" placeholder="Monthly spending" min="0">
+                                <span class="input-unit">$ on goods</span>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="services" placeholder="Monthly spending" min="0">
+                                <span class="input-unit">$ on services</span>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="waste" placeholder="Weekly waste" min="0">
+                                <span class="input-unit">lbs of waste</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="calculate-btn">
+                        <i class="fas fa-calculator"></i>
+                        Calculate My Footprint
+                    </button>
+                </form>
+
+                <div id="results" class="results-section" style="display: none;">
+                    <div class="results-card">
+                        <h3>Your Carbon Footprint</h3>
+                        <div class="result-main">
+                            <span class="result-number" id="totalFootprint">0</span>
+                            <span class="result-unit">kg CO₂/month</span>
+                        </div>
+                        <div class="result-comparison">
+                            <p>Compared to average: <span id="comparisonText"></span></p>
+                            <div class="comparison-bar">
+                                <div class="comparison-fill" id="comparisonFill"></div>
+                            </div>
+                        </div>
+                        <div class="result-breakdown">
+                            <h4>Breakdown by Category</h4>
+                            <div class="breakdown-item">
+                                <span>Transportation</span>
+                                <span id="transportPercent">0%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Home Energy</span>
+                                <span id="energyPercent">0%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Diet</span>
+                                <span id="dietPercent">0%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Consumption</span>
+                                <span id="consumptionPercent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="dashboard-section">
+            <div class="container">
+                <h2 class="section-title">Your Environmental Dashboard</h2>
+                <p class="section-subtitle">Track your progress and visualize your impact</p>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-chart-line"></i> Monthly Trend</h3>
+                        <div class="chart-container">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-chart-pie"></i> Category Breakdown</h3>
+                        <div class="chart-container">
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card full-width">
+                        <h3><i class="fas fa-chart-area"></i> Category Trends Over Time</h3>
+                        <div class="chart-container">
+                            <canvas id="categoryTrendChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                        <div class="achievements">
+                            <div class="achievement" id="achievement1">
+                                <i class="fas fa-medal"></i>
+                                <div>
+                                    <h4>First Step</h4>
+                                    <p>Complete your first calculation</p>
+                                </div>
+                            </div>
+                            <div class="achievement" id="achievement2">
+                                <i class="fas fa-leaf"></i>
+                                <div>
+                                    <h4>Eco Warrior</h4>
+                                    <p>Reduce footprint by 20%</p>
+                                </div>
+                            </div>
+                            <div class="achievement" id="achievement3">
+                                <i class="fas fa-globe"></i>
+                                <div>
+                                    <h4>Climate Champion</h4>
+                                    <p>30 days of tracking</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-bullseye"></i> Goals</h3>
+                        <div class="goals">
+                            <div class="goal">
+                                <div class="goal-info">
+                                    <h4>Reduce by 25%</h4>
+                                    <p>Monthly target</p>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="goalProgress" style="width: 0%"></div>
+                                    </div>
+                                    <span id="goalPercent">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recommendations" class="recommendations-section">
+            <div class="container">
+                <h2 class="section-title">Personalized Recommendations</h2>
+                <p class="section-subtitle">Actionable tips to reduce your carbon footprint</p>
+                
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Recommendations will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About EcoTracker</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>EcoTracker is a comprehensive carbon footprint calculator designed to help individuals understand and reduce their environmental impact. Our platform uses scientifically-backed calculations to provide accurate estimates of your daily carbon emissions.</p>
+                        <p>By tracking your activities and providing personalized recommendations, we empower you to make informed decisions that contribute to a more sustainable future.</p>
+                        <div class="about-features">
+                            <div class="feature">
+                                <i class="fas fa-calculator"></i>
+                                <h4>Accurate Calculations</h4>
+                                <p>Based on EPA and IPCC data</p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>Visual insights</p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-lightbulb"></i>
+                                <h4>Actionable Tips</h4>
+                                <p>Personalized recommendations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-leaf"></i>
+                    <span>EcoTracker</span>
+                </div>
+                <p>&copy; 2024 EcoTracker. Building a sustainable future, one footprint at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
